@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html lang="hi">
+<head>
+<meta charset="utf-8"/>
+<title>🌿 Prakriti Seva Sansthan</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2fff2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #c4fccc, #e6ffe6);
+      padding: 10px;
+      border-bottom: 2px solid green;
+    }
+
+    .text-content {
+      max-width: 70%;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #2d662d;
+    }
+
+    l {
+      display: block;
+      font-size: 16px;
+      color: #444;
+    }
+
+    blink {
+      animation: blinker 1s linear infinite;
+      color: red;
+    }
+
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+
+    .header img {
+      width: 130px;
+      height: 135px;
+    }
+
+    .main {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+      padding: 10px;
+    }
+
+    .slider {
+      width: 25%;
+      height: 230px;
+      padding: 10px;
+      position: relative;
+    }
+
+    .slider img {
+      position: absolute;
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slider img.active {
+      opacity: 1;
+    }
+
+    .center-info {
+      width: 40%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .center-info marquee {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2d662d;
+      background-color: #eaffea;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid green;
+    }
+
+    .center-info marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .form-section {
+      width: 25%;
+      background-color: #ffffff;
+      padding: 20px;
+      margin-left: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-image: url('leaf-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: #2d662d;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      background-color: #2d662d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 16px;
+    }
+
+    .form-group button:hover {
+      background-color: #3a8f3a;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,128,0,0.3);
+    }
+
+    .instructions-box {
+      width: 25%;
+      background-color: #eaffea;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px dashed green;
+      box-shadow: 0 0 8px rgba(0, 128, 0, 0.2);
+      font-size: 16px;
+      color: #2d662d;
+    }
+
+    .instructions-box marquee {
+      line-height: 1;
+      font-weight: 500;
+      color: red;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #eaffea;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      font-size: 15px;
+      margin-right: auto;
+    }
+
+    .payment-section img {
+      width: 200px;
+      margin: 10px 0;
+    }
+
+    .upi-button {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      animation: pulse 1.5s infinite;
+    }
+
+    .upi-button:hover {
+      background-color: #45a049;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #d6f5d6;
+      font-size: 14px;
+      color: #2d662d;
+    }
+  </style>
+<style>
+  .modal-slide-in {
+    animation: slideInUp 0.5s forwards;
+  }
+
+  .modal-slide-out {
+    animation: slideOutDown 0.5s forwards;
+  }
+
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(100%); }
+  }
+</style>
+</head>
+<body>
+<canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+<!-- Header -->
+<div class="header">
+<div class="text-content">
+<h1>🌿 प्रकृति सेवा संस्थान एवं एन0जी0ओ0<br/>Organisation of Nature Welfare &amp; N.G.O.</h1>
+<l>Save Tree, Save lives with team work</l>
+<l><blink>Please Donate for This</blink></l>
+</div>
+<img alt="Logo" src="Logo\logo11.png"/>
+</div>
+<nav style="background-color: #2d662d; padding: 10px 20px; display: flex; justify-content: flex-start; align-items: center; gap: 40px;"><div>
+<a href="index.html" onclick="goindex(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Home</a>
+<a href="#" onclick="document.getElementById('aboutModal').style.display='flex'; return false;" style="color: white; margin: 0 10px; text-decoration: none;">About</a>
+<a href="#contact" style="color: white; margin: 0 10px; text-decoration: none;">Contact</a>
+<a href="#donate" onclick="toggleSection('donate'); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Donate</a>
+<a href="idform.html" onclick="goform(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Create ID</a>
+</div><div style="color: white; font-weight: bold; font-size: 18px;">
+    🌿 Prakriti Seva Sansthan
+  </div></nav>
+<!-- Main Section -->
+<div class="main">
+<div class="slider" id="slider">
+<img alt="Image 1" class="active" src="Images\1.jpeg"/>
+<img alt="Image 2" src="Images\2.jpeg"/>
+<img alt="Image 3" src="Images\3.jpeg"/>
+<img alt="Image 4" src="Images\4.jpeg"/>
+<img alt="Image 5" src="Images\5.jpeg"/>
+<img alt="Image 6" src="Images\6.jpeg"/>
+<img alt="Image 7" src="Images\7.jpeg"/>
+<img alt="Image 8" src="Images\8.jpeg"/>
+<img alt="Image 9" src="Images\9.jpeg"/>
+<img alt="Image 10" src="Images\10.jpeg"/>
+<img alt="Image 11" src="Images\11.jpeg"/>
+</div>
+<div class="center-info">
+<marquee behavior="scroll" direction="up" height="230" scrollamount="3">
+      🌿 पौधे लगाएँ, जीवन बचाएँ <br/><br/>
+      📢 20 जून को वृक्षारोपण कार्यक्रम में शामिल हों <br/><br/>
+      💧 जल संरक्षण अभियान चल रहा है <br/><br/>
+      🤝 स्वेच्छा से सेवा करें - संपर्क करें: 8299354507
+    </marquee>
+</div>
+<div class="form-section">
+<h2>Contact / Query Form</h2>
+<div class="form-group">
+<label for="name">नाम (Name)</label>
+<input id="name" placeholder="Enter Your Name" type="text"/>
+</div>
+<div class="form-group">
+<label for="mobile">मोबाइल नंबर (Mobile No)</label>
+<input id="mobile" placeholder="Enter Your Mobile Number" type="text"/>
+</div>
+<div class="form-group">
+<label for="email">ईमेल (Email)</label>
+<input id="email" placeholder="Enter Your Email" type="email"/>
+</div>
+<div class="form-group">
+<label for="message">संदेश (Message)</label>
+<textarea id="message" placeholder="Write your message here......." rows="4"></textarea>
+</div>
+<div class="form-group">
+<button>भेजें (Submit)</button>
+</div>
+</div>
+</div>
+<!-- Instruction Box -->
+<h1 style="color: red; margin="20px;">📌 Important Instructions Belwo:-</h1>
+<div class="instructions-box">
+<marquee behavior="scroll" direction="up" height="200" scrollamount="2" width="300">
+    🌱 <strong>Also Read This Contents:-</strong><br/><br/>
+    ➤ पेड़ लगाइए, पृथ्वी बचाइए।<br/><br/>
+    ➤ हरियाली है जीवन का आधार।<br/><br/>
+    ➤ जल, जंगल और जमीन का करें सम्मान।<br/><br/>
+    ➤ एक पौधा = एक जीवन।<br/><br/>
+    ➤ प्रकृति हमारी माँ है, इसकी रक्षा करें।<br/><br/>
+    ➤ अपने आस-पास स्वच्छता रखें।<br/><br/>
+    ➤ जीवन को हरा-भरा बनाएं।
+  </marquee>
+</div>
+<!-- Payment Section -->
+<div class="payment-section">
+<img alt="UPI QR" src="Images\upiqr.jpeg"/>
+<p>प्रकृति सेवा संस्थान को सहायता देने हेतु स्कैन करें</p>
+<p><em>👇 कृपया बटन पर टैप कर मोबाइल UPI ऐप से ₹100 का योगदान करें</em></p>
+<a class="upi-button" href="upi://pay?pa=9936008023@ybl&amp;pn=Rahul%20Kushwaha&amp;am=100&amp;cu=INR">₹100 Donate via UPI</a>
+</div>
+<div id="contact" style="display: none; padding: 10px 05px; background-color: #ffffff;">
+<h2 style="color: #2d662d;">📞 Contact Us</h2>
+<p style="font-size: 16px; color: #333;">
+        आप हमें 📞 8299354507 पर कॉल करें या prakritiseva@gmail.com पर ईमेल भेजें।
+        <br/><br/>
+        हमारा उद्देश्य हर गाँव और शहर में हरियाली फैलाना है। आपके सहयोग की प्रतीक्षा है।
+      </p>
+</div>
+<!-- Footer -->
+<div id="donate" style="display: none; padding: 20px 10px; background-color: #eaffea; text-align: center;">
+<h2 style="color: #2d662d;">🙏 कृपया सहयोग करें</h2>
+<p style="font-size: 16px; color: #333;">
+    हमारा उद्देश्य पर्यावरण की रक्षा करना है। कृपया नीचे दिए गए बटन पर क्लिक कर ₹100 का UPI भुगतान करें।
+  </p>
+<button onclick="window.location.href='upi://pay?pa=9936008023@ybl&amp;pn=Rahul%20Kushwaha&amp;am=100&amp;cu=INR'" style="margin-top: 15px; background-color: #4CAF50; color: white; padding: 12px 30px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer;">
+    💳 पेमेंट करें
+  </button>
+</div>
+<h1 style="font-size: 15px; color: green;"><l>🌳 Why We Should Save Trees and Water</l>
+🔹 Historical Importance
+Since ancient times, trees and water have been considered sacred in many cultures:
+
+In India, rivers like the Ganga and trees like the Banyan were worshipped.
+
+Civilizations such as the Indus Valley, Egyptians, and Mesopotamians grew around rivers, showing how crucial water was for survival.
+
+Sacred groves (forest patches) existed in tribal areas to protect biodiversity.
+
+This shows that our ancestors knew the value of nature and lived in harmony with it.
+
+🌲 Importance of Trees
+Oxygen Production: Trees are the lungs of the Earth — they give us the oxygen we breathe.
+
+Climate Regulation: Trees absorb carbon dioxide and help control global warming.
+
+Prevent Soil Erosion: Their roots bind the soil and stop floods and landslides.
+
+Habitat for Wildlife: Forests are home to more than 80% of the world’s terrestrial species.
+
+Medicinal Value: Many life-saving medicines are derived from plants.
+
+💧 Importance of Water
+Essential for Life: Every living being — from a tiny insect to humans — needs water to survive.
+
+Agriculture: No crops can grow without water.
+
+Daily Use: Cooking, cleaning, drinking, and sanitation — all require water.
+
+Industry & Energy: Water is used in factories and power generation.
+
+Maintains Ecosystems: Rivers, lakes, and oceans support countless species.
+
+❗ Why We Must Act Now
+Deforestation and water wastage are increasing rapidly.
+
+Climate change is causing droughts, floods, and biodiversity loss.
+
+Over 1 billion people worldwide lack access to clean drinking water.
+
+Every second, a part of the forest the size of a football field is lost.
+
+✅ What We Can Do
+Plant trees and protect existing forests.
+
+Harvest rainwater.
+
+Use water wisely — fix leaks, turn off taps.
+
+Avoid single-use plastic and chemicals that pollute rivers.
+
+Educate others about conservation.
+
+🌱 “The Earth does not belong to us; we belong to the Earth.”
+Let’s honor this responsibility — Save Trees. Save Water. Save Life. 💧🌍🌳</h1>
+<h2 style="font-size: 15px; color: green;"><l>🌳 पेड़ और पानी क्यों बचाएं?</l>
+🔹 ऐतिहासिक महत्त्व
+प्राचीन काल से ही पेड़ और पानी को अनेक संस्कृतियों में पवित्र माना गया है:
+
+भारत में गंगा जैसी नदियों और वट वृक्ष (बरगद) की पूजा की जाती रही है।
+
+सिंधु घाटी, मिस्र और मेसोपोटामिया जैसी सभ्यताएं नदियों के किनारे ही विकसित हुईं, जिससे जल की महत्ता सिद्ध होती है।
+
+जनजातीय क्षेत्रों में "देव वन" या "सक्रेड ग्रोव" जैसे वन क्षेत्र जैव विविधता की रक्षा के लिए सुरक्षित रखे जाते थे।
+
+यह सब दर्शाता है कि हमारे पूर्वज प्रकृति का सम्मान करते थे और उसके साथ सामंजस्य में जीवन जीते थे।
+
+🌲 पेड़ों का महत्व
+ऑक्सीजन का उत्पादन: पेड़ धरती के फेफड़े हैं — यही हमें जीवनदायिनी ऑक्सीजन देते हैं।
+
+जलवायु संतुलन: पेड़ कार्बन डाइऑक्साइड को अवशोषित करके ग्लोबल वार्मिंग को कम करते हैं।
+
+मिट्टी का क्षरण रोकना: पेड़ों की जड़ें मिट्टी को बांधकर बाढ़ और भूस्खलन से बचाव करती हैं।
+
+वन्यजीवों का घर: 80% से अधिक स्थलीय प्रजातियां वनों में ही रहती हैं।
+
+औषधीय उपयोग: जीवन रक्षक अनेक दवाइयां पौधों से ही प्राप्त होती हैं।
+
+💧 पानी का महत्व
+जीवन के लिए अनिवार्य: एक छोटी चींटी से लेकर इंसान तक, हर जीव को पानी चाहिए।
+
+कृषि के लिए आवश्यक: कोई भी फसल पानी के बिना नहीं उग सकती।
+
+दैनिक उपयोग: खाना बनाना, सफाई, पीना और स्वच्छता — सब कुछ जल पर निर्भर है।
+
+उद्योग और ऊर्जा: कारखानों और बिजली उत्पादन में भी पानी का इस्तेमाल होता है।
+
+पारिस्थितिकी का संतुलन: नदियां, झीलें और समुद्र लाखों प्रजातियों का घर हैं।
+
+❗ अभी कार्य करना क्यों ज़रूरी है?
+जंगलों की अंधाधुंध कटाई और जल का अपव्यय लगातार बढ़ रहा है।
+
+जलवायु परिवर्तन के कारण सूखा, बाढ़ और जैव विविधता का विनाश हो रहा है।
+
+1 अरब से अधिक लोगों को आज भी साफ पीने का पानी नहीं मिल रहा।
+
+हर सेकंड एक फ़ुटबॉल मैदान जितना जंगल नष्ट हो रहा है।
+
+✅ हम क्या कर सकते हैं?
+पेड़ लगाएं और मौजूदा वनों की रक्षा करें।
+
+वर्षा जल संचयन करें।
+
+पानी का विवेकपूर्ण उपयोग करें — लीकेज ठीक करें, नल बंद रखें।
+
+प्लास्टिक और रसायनों से दूर रहें जो नदियों को प्रदूषित करते हैं।
+
+संरक्षण के बारे में दूसरों को जागरूक करें।
+
+🌱 "पृथ्वी हमारी नहीं है, हम पृथ्वी के हैं।"
+आइए इस ज़िम्मेदारी का सम्मान करें —
+पेड़ बचाएं। पानी बचाएं। जीवन बचाएं। 💧🌍🌳</h2>
+<div class="footer">
+  © 2025 Prakriti Seva Sansthan | Powered by Nature Volunteers | संपर्क: 8299354507
+</div>
+<!-- Image Slider Script -->
+<script>
+  const images = document.querySelectorAll('#slider img');
+  let current = 0;
+  setInterval(() => {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 3000);
+</script>
+<!-- Leaf Animation Script -->
+<script>
+  const canvas = document.getElementById("leafCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let leaves = [];
+
+  for (let i = 0; i < 20; i++) {
+    leaves.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 10 + Math.random() * 10,
+      d: Math.random() + 1
+    });
+  }
+
+  function drawLeaves() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0,128,0,0.2)";
+    ctx.beginPath();
+    for (let i = 0; i < leaves.length; i++) {
+      let l = leaves[i];
+      ctx.moveTo(l.x, l.y);
+      ctx.arc(l.x, l.y, l.r, 0, Math.PI * 2, true);
+    }
+    ctx.fill();
+    moveLeaves();
+  }
+
+  function moveLeaves() {
+    for (let i = 0; i < leaves.length; i++) {
+      let l = leaves[i];
+      l.y += l.d;
+      if (l.y > canvas.height) {
+        l.y = 0;
+        l.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  setInterval(drawLeaves, 30);
+</script>
+<div id="aboutModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;transition: all 0.5s ease;">
+<div style="background-color: #fff; padding: 0; border-radius: 10px; max-width: 600px; width: 90%; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(100%); animation: slideInUp 0.6s forwards;">
+<span onclick="closeAboutModal()" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #fff; background: #2d662d; border-radius: 50%; padding: 2px 10px;">×</span>
+<img alt="About Image" src="Logo\aboutlogo.png" style="width: 100%; border-bottom: 4px solid #2d662d;"/>
+<div style="padding: 20px;">
+<h2 style="color: #2d662d;">🌱 About Prakriti Seva Sansthan</h2>
+<p style="font-size: 16px; line-height: 1.6; color: #333;">
+                Prakriti Seva Sansthan is a non-profit organization committed to nature preservation.
+                We conduct tree plantations, environmental education and awareness drives.
+              </p>
+<blockquote style="border-left: 5px solid #2d662d; padding-left: 15px; color: #2d662d; font-style: italic;">
+                "पेड़ लगाइए, पृथ्वी बचाइए। प्रकृति हमारी माँ है – इसकी रक्षा करना हमारा धर्म है।"
+              </blockquote>
+</div>
+</div>
+</div>
+<script>
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      const isHidden = section.style.display === 'none';
+      section.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  document.querySelector('a[href="#donate"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleSection('donate');
+  });
+
+  document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleSection('contact');
+  });
+
+  // 'About' modal toggle remains unchanged
+</script>
+<script>
+  function goHome() {
+    // Hide About popup if open
+    const aboutModal = document.getElementById('aboutModal');
+    if (aboutModal) aboutModal.style.display = 'none';
+
+    // Hide contact and donate sections if visible
+    const contact = document.getElementById('contact');
+    if (contact) contact.style.display = 'none';
+
+    const donate = document.getElementById('donate');
+    if (donate) donate.style.display = 'none';
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<script>
+  function openAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-out');
+    modal.style.display = 'flex';
+    modal.classList.add('modal-slide-in');
+  }
+
+  function closeAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-in');
+    modal.classList.add('modal-slide-out');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 500);
+  }
+
+  document.querySelector('a[onclick*="aboutModal"]').onclick = function(e) {
+    e.preventDefault();
+    openAboutModal();
+  };
+</script>
+
+<script>
+  document.querySelector('.form-group button').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name) {
+      alert("⚠️ Please Enter Your Name");
+      document.getElementById('name').focus();
+      return;
+    }
+    if (!mobile) {
+      alert("⚠️ Please Enter Your Mobile Number");
+      document.getElementById('mobile').focus();
+      return;
+    }
+    if (!email) {
+      alert("⚠️ Please Enter Your Email");
+      document.getElementById('email').focus();
+      return;
+    }
+    if (!message) {
+      alert("⚠️ Write Your Message here..........");
+      document.getElementById('message').focus();
+      return;
+    }
+
+    alert("✅ Congratulation, Your Data has been submitted successfully");
+  });
+</script>
+
+</body>
+</html>
