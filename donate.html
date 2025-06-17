@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Donate - Prakriti Seva Sansthan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('Logo/watermark.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-color: #f2fff2;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #c4fccc, #e6ffe6);
+      padding: 10px;
+      border-bottom: 2px solid green;
+    }
+
+    .text-content {
+      max-width: 70%;
+    }
+
+    .text-content h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #2d662d;
+    }
+
+    .text-content l {
+      display: block;
+      font-size: 16px;
+      color: #444;
+    }
+
+    blink {
+      animation: blinker 1s linear infinite;
+      color: red;
+    }
+
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+
+    .header img {
+      width: 130px;
+      height: 135px;
+    }
+
+    nav {
+      background-color: #2d662d;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .donate-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #ffffffcc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+      text-align: center;
+    }
+
+    .donate-container h2 {
+      color: #2d662d;
+      margin-bottom: 20px;
+    }
+
+    .donate-container img {
+      width: 250px;
+      margin-bottom: 20px;
+    }
+
+    .upi-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .upi-button:hover {
+      background-color: #3e8e41;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="text-content">
+      <h1>🌿 प्रकृति सेवा संस्थान एवं एन0जी0ओ0<br/>Organisation of Nature Welfare & N.G.O.</h1>
+      <l>Save Tree, Save lives with team work</l>
+      <l><blink>Please Donate for This</blink></l>
+    </div>
+    <img src="Logo/logo11.png" alt="Logo"/>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    
+<div>
+      <a href="index.html" onclick="goindex(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Home</a>
+      <a href="#" onclick="document.getElementById('aboutModal').style.display='flex'; return false;" style="color: white; margin: 0 10px; text-decoration: none;">About</a>
+      <a href="#"contact" style="color: white; margin: 0 10px; text-decoration: none;">Contact</a>
+      <a href="donate.html" onclick="toggleSection('donate'); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Donate</a>
+      <a href="idform.html" onclick="goform(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Create ID</a>
+      <a href="Login.html" onclick="goLogin(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Login</a>
+      <a href="donate.html" onclick="godonate(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Donate Us</a> 
+    </div>
+    <div style="color: white; font-weight: bold; font-size: 18px;">
+      🌿 Prakriti Seva Sansthan
+    </div>
+  </nav>
+
+  <!-- Donation Section -->
+  <div class="donate-container">
+    <h2>Support Our Green Mission</h2>
+    <p>Scan the QR code below or click the button to donate ₹100 via UPI.</p>
+    <img src="Images\upiqr.jpeg" alt="QR Code">
+    <br>
+    <a class="upi-button" href="upi://pay?pa=9936008023@ybl&pn=PrakritiSeva&am=100&cu=INR">Pay ₹100 via UPI</a>
+  </div>
+
+
+
+
+
+
+
+
+<!-- Image Slider Script -->
+<script>
+  const images = document.querySelectorAll('#slider img');
+  let current = 0;
+  setInterval(() => {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 3000);
+</script>
+<!-- Leaf Animation Script -->
+<script>
+  const canvas = document.getElementById("leafCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let leaves = [];
+
+  for (let i = 0; i < 20; i++) {
+    leaves.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 10 + Math.random() * 10,
+      d: Math.random() + 1
+    });
+  }
+
+  function drawLeaves() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0,128,0,0.2)";
+    ctx.beginPath();
+    for (let i = 0; i < leaves.length; i++) {
+      let l = leaves[i];
+      ctx.moveTo(l.x, l.y);
+      ctx.arc(l.x, l.y, l.r, 0, Math.PI * 2, true);
+    }
+    ctx.fill();
+    moveLeaves();
+  }
+
+  function moveLeaves() {
+    for (let i = 0; i < leaves.length; i++) {
+      let l = leaves[i];
+      l.y += l.d;
+      if (l.y > canvas.height) {
+        l.y = 0;
+        l.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  setInterval(drawLeaves, 30);
+</script>
+<div id="aboutModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;transition: all 0.5s ease;">
+<div style="background-color: #fff; padding: 0; border-radius: 10px; max-width: 600px; width: 90%; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(100%); animation: slideInUp 0.6s forwards;">
+<span onclick="closeAboutModal()" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #fff; background: #2d662d; border-radius: 50%; padding: 2px 10px;">×</span>
+<img alt="About Image" src="Logo\aboutlogo.png" style="width: 100%; border-bottom: 4px solid #2d662d;"/>
+<div style="padding: 20px;">
+<h2 style="color: #2d662d;">🌱 About Prakriti Seva Sansthan</h2>
+<p style="font-size: 16px; line-height: 1.6; color: #333;">
+                Prakriti Seva Sansthan is a non-profit organization committed to nature preservation.
+                We conduct tree plantations, environmental education and awareness drives.
+              </p>
+<blockquote style="border-left: 5px solid #2d662d; padding-left: 15px; color: #2d662d; font-style: italic;">
+                "पेड़ लगाइए, पृथ्वी बचाइए। प्रकृति हमारी माँ है – इसकी रक्षा करना हमारा धर्म है।"
+              </blockquote>
+</div>
+</div>
+</div>
+<script>
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      const isHidden = section.style.display === 'none';
+      section.style.display = isHidden ? 'block' : 'none';
+      if (isHidden) section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  document.querySelector('a[href="#donate"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleSection('donate');
+  });
+
+  document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleSection('contact');
+  });
+
+  // 'About' modal toggle remains unchanged
+</script>
+<script>
+  function goHome() {
+    // Hide About popup if open
+    const aboutModal = document.getElementById('aboutModal');
+    if (aboutModal) aboutModal.style.display = 'none';
+
+    // Hide contact and donate sections if visible
+    const contact = document.getElementById('contact');
+    if (contact) contact.style.display = 'none';
+
+    const donate = document.getElementById('donate');
+    if (donate) donate.style.display = 'none';
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<script>
+  function openAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-out');
+    modal.style.display = 'flex';
+    modal.classList.add('modal-slide-in');
+  }
+
+  function closeAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-in');
+    modal.classList.add('modal-slide-out');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 500);
+  }
+
+  document.querySelector('a[onclick*="aboutModal"]').onclick = function(e) {
+    e.preventDefault();
+    openAboutModal();
+  };
+</script>
+</body>
+</html>
