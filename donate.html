@@ -102,6 +102,38 @@
     .upi-button:hover {
       background-color: #3e8e41;
     }
+	.modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
 
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -146,10 +178,6 @@
     <br>
     <a class="upi-button" href="upi://pay?pa=9936008023@ybl&pn=PrakritiSeva&am=100&cu=INR">Pay ₹100 via UPI</a>
   </div>
-
-
-
-
 
 <!-- Image Slider Script -->
 <script>
@@ -205,13 +233,13 @@
 
   setInterval(drawLeaves, 30);
 </script>
-<div id="aboutModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;transition: all 0.5s ease;">
+<div id="aboutModal" style="display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 50%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;transition: all 0.5s ease;">
 <div style="background-color: #fff; padding: 0; border-radius: 10px; max-width: 600px; width: 90%; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(100%); animation: slideInUp 0.6s forwards;">
 <span onclick="closeAboutModal()" style="position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #fff; background: #2d662d; border-radius: 50%; padding: 2px 10px;">×</span>
-<img alt="About Image" src="Logo\aboutlogo.png" style="width: 100%; border-bottom: 4px solid #2d662d;"/>
-<div style="padding: 20px;">
+<img alt="About Image" src="Logo\aboutlogo.png" style="width: 25%; border-bottom: 4px solid #2d662d;"/>
+<div style="padding: 10px;">
 <h2 style="color: #2d662d;">🌱 About Prakriti Seva Sansthan</h2>
-<p style="font-size: 16px; line-height: 1.6; color: #333;">
+<p style="font-size: 16px; line-height: 1.5; color: #333;">
                 Prakriti Seva Sansthan is a non-profit organization committed to nature preservation.
                 We conduct tree plantations, environmental education and awareness drives.
               </p>
@@ -221,27 +249,7 @@
 </div>
 </div>
 </div>
-<script>
-  function toggleSection(id) {
-    const section = document.getElementById(id);
-    if (section) {
-      const isHidden = section.style.display === 'none';
-      section.style.display = isHidden ? 'block' : 'none';
-      if (isHidden) section.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  document.querySelector('a[href="#donate"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    toggleSection('donate');
-  });
-
-  document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
-    e.preventDefault();
-    toggleSection('contact');
-  });
-
-  // 'About' modal toggle remains unchanged
+ 
 </script>
 <script>
   function goHome() {

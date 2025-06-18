@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="hi">
@@ -558,8 +559,52 @@
       \n5. Volunteer ID must be shown on demand.
     </div>
   </div>
-
 </div>
+
+
+
+
+  // 'About' modal toggle remains unchanged
+</script>
+<script>
+  function goHome() {
+    // Hide About popup if open
+    const aboutModal = document.getElementById('aboutModal');
+    if (aboutModal) aboutModal.style.display = 'none';
+
+    // Hide contact and donate sections if visible
+    const contact = document.getElementById('contact');
+    if (contact) contact.style.display = 'none';
+
+    const donate = document.getElementById('donate');
+    if (donate) donate.style.display = 'none';
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<script>
+  function openAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-out');
+    modal.style.display = 'flex';
+    modal.classList.add('modal-slide-in');
+  }
+
+  function closeAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-in');
+    modal.classList.add('modal-slide-out');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 500);
+  }
+
+  document.querySelector('a[onclick*="aboutModal"]').onclick = function(e) {
+    e.preventDefault();
+    openAboutModal();
+  };
+</script>
 
 <script>
   const showPreviewBtn = document.getElementById('showPreviewBtn');

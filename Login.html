@@ -1,10 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="hi">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🌿 Prakriti Seva Sansthan</title>
-  <style>
+<meta charset="utf-8"/>
+<title>🌿 Prakriti Seva Sansthan</title>
+<style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f2fff2;
@@ -14,28 +14,26 @@
 
     .header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       background: linear-gradient(to right, #c4fccc, #e6ffe6);
-      padding: 10px 20px;
+      padding: 10px;
       border-bottom: 2px solid green;
     }
 
     .text-content {
-      flex-grow: 1;
-      padding-right: 20px;
-      text-align: left;
+      max-width: 70%;
     }
 
-    .text-content h1 {
+    h1 {
       margin: 0;
-      font-size: 22px;
+      font-size: 28px;
       color: #2d662d;
     }
 
-    .text-content l {
+    l {
       display: block;
-      font-size: 14px;
+      font-size: 16px;
       color: #444;
     }
 
@@ -49,36 +47,167 @@
     }
 
     .header img {
-      width: 100px;
-      height: auto;
+      width: 130px;
+      height: 135px;
     }
 
-    nav {
-      background-color: #2d662d;
-      padding: 10px 20px;
+    .main {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: row;
+      margin-top: 10px;
+      padding: 10px;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+    .slider {
+      width: 25%;
+      height: 230px;
+      padding: 10px;
+      position: relative;
     }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
+    .slider img {
+      position: absolute;
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    .brand {
-      color: white;
-      font-weight: bold;
+    .slider img.active {
+      opacity: 1;
+    }
+
+    .center-info {
+      width: 40%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .center-info marquee {
       font-size: 18px;
+      font-weight: bold;
+      color: #2d662d;
+      background-color: #eaffea;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid green;
+    }
+
+    .center-info marquee:hover {
+      animation-play-state: paused;
+    }
+
+    .form-section {
+      width: 25%;
+      background-color: #ffffff;
+      padding: 20px;
+      margin-left: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-image: url('leaf-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: #2d662d;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group button {
+      background-color: #2d662d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 50%;
+      font-size: 16px;
+    }
+
+    .form-group button:hover {
+      background-color: #3a8f3a;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,128,0,0.3);
+    }
+
+    .instructions-box {
+      width: 25%;
+      background-color: #eaffea;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px dashed green;
+      box-shadow: 0 0 8px rgba(0, 128, 0, 0.2);
+      font-size: 16px;
+      color: #2d662d;
+    }
+
+    .instructions-box marquee {
+      line-height: 1;
+      font-weight: 500;
+      color: red;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #eaffea;
+      border-radius: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      font-size: 15px;
+      margin-right: auto;
+    }
+
+    .payment-section img {
+      width: 200px;
+      margin: 10px 0;
+    }
+
+    .upi-button {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      animation: pulse 1.5s infinite;
+    }
+
+    .upi-button:hover {
+      background-color: #45a049;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .footer {
@@ -88,68 +217,49 @@
       font-size: 14px;
       color: #2d662d;
     }
-
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .text-content {
-        text-align: left;
-        padding: 10px 0;
-      }
-
-      .header img {
-        align-self: flex-end;
-        margin-top: 10px;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-      }
-    }
   </style>
+<style>
+  .modal-slide-in {
+    animation: slideInUp 0.5s forwards;
+  }
+
+  .modal-slide-out {
+    animation: slideOutDown 0.5s forwards;
+  }
+
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideOutDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(100%); }
+  }
+</style>
 </head>
 <body>
-
-<!-- ✅ Updated Header -->
+<canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+<!-- Header -->
 <div class="header">
-  <div class="text-content">
-    <h1>🌿 प्रकृति सेवा संस्थान एवं एन0जी0ओ0<br/>Organisation of Nature Welfare & NGO</h1>
-    <l>Save Tree, Save Lives with Team Work</l>
-    <l><blink>Please Donate for This</blink></l>
-  </div>
-  <img src="Logo/logo11.png" alt="Logo" />
+<div class="text-content">
+<h1>🌿 प्रकृति सेवा संस्थान एवं एन0जी0ओ0<br/>Organisation of Nature Welfare &amp; N.G.O.</h1>
+<l>Save Tree, Save lives with team work</l>
+<l><blink>Please Donate for This</blink></l>
 </div>
-
-<!-- ✅ Navigation -->
-<nav>
-  <div class="nav-links">
-    <a href="index.html" onclick="goindex(); return false;">Home</a>
-    <a href="#" onclick="document.getElementById('aboutModal').style.display='flex'; return false;">About</a>
-    <a href="#contact">Contact</a>
-    <a href="#donate" onclick="toggleSection('donate'); return false;">Donate</a>
-    <a href="idform.html" onclick="goform(); return false;">Create ID</a>
-    <a href="Login.html" onclick="goLogin(); return false;">Login</a>
-    <a href="donate.html" onclick="godonate(); return false;">Donate Us</a>
-  </div>
-  <div class="brand">🌿 Prakriti Seva Sansthan</div>
-</nav>
-
-
-
-
-
-
-
+<img alt="Logo" src="Logo\logo11.png"/>
+</div>
+<nav style="background-color: #2d662d; padding: 10px 20px; display: flex; justify-content: flex-start; align-items: center; gap: 40px;"><div>
+<a href="index.html" onclick="goindex(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Home</a>
+<a href="#" onclick="document.getElementById('aboutModal').style.display='flex'; return false;" style="color: white; margin: 0 10px; text-decoration: none;">About</a>
+<a href="#contact" style="color: white; margin: 0 10px; text-decoration: none;">Contact</a>
+<a href="#donate" onclick="toggleSection('donate'); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Donate</a>
+<a href="idform.html" onclick="goform(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Create ID</a>
+<a href="Login.html" onclick="goLogin(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Login</a>
+<a href="donate.html" onclick="godonate(); return false;" style="color: white; margin: 0 10px; text-decoration: none;">Donate Us</a>
+</div><div style="color: white; font-weight: bold; font-size: 18px;">
+    🌿 Prakriti Seva Sansthan
+  </div></nav>
 
 
 
@@ -452,85 +562,74 @@
 </div>
 
 
-
-
-
 <script>
-  // Run when DOM is fully loaded
-  document.addEventListener("DOMContentLoaded", function () {
+  function openAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-out');
+    modal.style.display = 'flex';
+    modal.classList.add('modal-slide-in');
+  }
 
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      if (section) {
-        const isHidden = section.style.display === 'none' || getComputedStyle(section).display === 'none';
-        section.style.display = isHidden ? 'block' : 'none';
-        if (isHidden) section.scrollIntoView({ behavior: 'smooth' });
+  function closeAboutModal() {
+    const modal = document.getElementById('aboutModal');
+    modal.classList.remove('modal-slide-in');
+    modal.classList.add('modal-slide-out');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 500);
+  }
+
+  document.querySelector('a[onclick*="aboutModal"]').onclick = function(e) {
+    e.preventDefault();
+    openAboutModal();
+  };
+</script>
+<!-- ✅ Leaf Falling Script -->
+<script>
+  const canvas = document.getElementById("leafCanvas");
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  const leafCount = 25;
+  const leaves = [];
+
+  for (let i = 0; i < leafCount; i++) {
+    leaves.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 10 + Math.random() * 20,
+      speedY: 1 + Math.random() * 2,
+      speedX: Math.random() * 1 - 0.5,
+    });
+  }
+
+  function drawLeaves() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "rgba(0,128,0,0.3)";
+    for (let leaf of leaves) {
+      ctx.beginPath();
+      ctx.arc(leaf.x, leaf.y, leaf.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Move leaf
+      leaf.y += leaf.speedY;
+      leaf.x += leaf.speedX;
+
+      if (leaf.y > canvas.height) {
+        leaf.y = 0;
+        leaf.x = Math.random() * canvas.width;
       }
     }
+    requestAnimationFrame(drawLeaves);
+  }
 
-    function goHome() {
-      const aboutModal = document.getElementById('aboutModal');
-      if (aboutModal) aboutModal.style.display = 'none';
-
-      const contact = document.getElementById('contact');
-      if (contact) contact.style.display = 'none';
-
-      const donate = document.getElementById('donate');
-      if (donate) donate.style.display = 'none';
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function openAboutModal() {
-      const modal = document.getElementById('aboutModal');
-      if (modal) {
-        modal.classList.remove('modal-slide-out');
-        modal.style.display = 'flex';
-        modal.classList.add('modal-slide-in');
-      }
-    }
-
-    function closeAboutModal() {
-      const modal = document.getElementById('aboutModal');
-      if (modal) {
-        modal.classList.remove('modal-slide-in');
-        modal.classList.add('modal-slide-out');
-        setTimeout(() => {
-          modal.style.display = 'none';
-        }, 500);
-      }
-    }
-
-    // Attach click events
-    const donateLink = document.querySelector('a[href="#donate"]');
-    if (donateLink) {
-      donateLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        toggleSection('donate');
-      });
-    }
-
-    const contactLink = document.querySelector('a[href="#contact"]');
-    if (contactLink) {
-      contactLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        toggleSection('contact');
-      });
-    }
-
-    const aboutLink = document.querySelector('a[data-target="aboutModal"]');
-    if (aboutLink) {
-      aboutLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        openAboutModal();
-      });
-    }
-
-    // Expose functions globally if needed
-    window.goHome = goHome;
-    window.openAboutModal = openAboutModal;
-    window.closeAboutModal = closeAboutModal;
-  });
+  drawLeaves();
 </script>
 
 </body>
