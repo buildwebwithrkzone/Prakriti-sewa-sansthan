@@ -7,7 +7,7 @@
 <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #d4fc79, #96e6a1);
+      background: linear-gradient(to right, #c4fccc, #e6ffe6);
       margin: 0;
       padding: 0;
     }
@@ -310,6 +310,58 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watermark Background</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ✅ Background watermark container */
+    .watermark-background {
+      position: relative;
+      min-height: 100vh;
+      background-color: #fff;
+    }
+
+    .watermark-background::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+    
+      background-image: url('Logo\logo11.png'); 
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100px auto; 
+      opacity: 0.1; 
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 1; 
+      padding: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+</body>
+</html>
+
+
+
+
 
 
 <div id="aboutModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); justify-content: center; align-items: center;transition: all 0.5s ease;">
@@ -328,6 +380,7 @@
 </div>
 </div>
 </div>
+
 
 
 <script>
@@ -491,6 +544,13 @@
       word-wrap: break-word;
       white-space: normal;
     }
+ .footer {
+      text-align: center;
+      padding: 08px;
+      background-color: brwon;
+      font-size: 14px;
+      color: #2d662d;
+    }
 
     .serial {
       position: absolute;
@@ -652,6 +712,9 @@
       document.getElementById("cardPreview").scrollIntoView({ behavior: "smooth" });
     }
   </script>
+<div class="footer" style="position: fixed; bottom: 0; width: 100%; background: pupule; text-align: center;">
+  © 2025 Prakriti Seva Sansthan | Powered by Nature Volunteers | संपर्क: 8299354507
+</div>
 </body>
 </html>
 
